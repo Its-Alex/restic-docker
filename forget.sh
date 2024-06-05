@@ -29,4 +29,4 @@ done
 restic check --no-lock
 rm -rf /tmp/restic-check-cache-*
 
-echo 'Finished prune successfully'
+echo 'Finished forget with prune successfully'

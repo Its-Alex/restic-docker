@@ -20,7 +20,7 @@ services:
       - RESTIC_PASSWORD=password
       - RESTIC_REPOSITORY=rclone:ftpd_server:backup
       - "RESTIC_FTP_DOCKER_BACKUP_CRON_SCHEDULE=*/1 * * * *"
-      - "RESTIC_FTP_DOCKER_PRUNE_CRON_SCHEDULE=*/2 * * * *"
+      - "RESTIC_FTP_DOCKER_FORGET_CRON_SCHEDULE=*/2 * * * *"
     volumes:
       - "./rclone.conf:/root/.config/rclone/rclone.conf:ro"
       - "./backup.txt:/backup/backup.txt"

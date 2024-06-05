@@ -23,8 +23,8 @@ restic-1       | main.crontab content:
 restic-1       | # Backup script
 restic-1       | */1 * * * * flock -n /opt/restic/backup.lockfile /opt/restic/backup.sh
 restic-1       |
-restic-1       | # Prune script
-restic-1       | */2 * * * * flock -n /opt/restic/prune.lockfile /opt/restic/prune.sh
+restic-1       | # Forget script
+restic-1       | */2 * * * * flock -n /opt/restic/forget.lockfile /opt/restic/forget.sh
 restic-1       | time="2024-06-05T21:06:07Z" level=info msg="read crontab: /opt/restic/main.crontab"
 ftpd_server-1  | Creating user...
 ftpd_server-1  | Password:
@@ -37,7 +37,7 @@ ftpd_server-1  | Starting Pure-FTPd:
 ftpd_server-1  |   pure-ftpd  -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P localhost   -p 30000:30009 -c 5 -C 5
 ```
 
-`restic-ftp-docker` is configured to make backup every minute, and prune every
+`restic-ftp-docker` is configured to make backup every minute, and forget every
 two minutes.
 
 ## Hack

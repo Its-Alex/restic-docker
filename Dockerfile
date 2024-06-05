@@ -32,7 +32,7 @@ COPY --from=BASE --chmod=0755 /tmp/rclone/rclone /usr/local/bin/rclone
 COPY --from=BASE --chmod=0755 /tmp/supercronic /usr/local/bin/supercronic
 
 COPY --chmod=0755 ./backup.sh /opt/restic/backup.sh
-COPY --chmod=0755 ./prune.sh /opt/restic/prune.sh
+COPY --chmod=0755 ./forget.sh /opt/restic/forget.sh
 COPY --chmod=0755 ./entrypoint.sh /opt/estic/entrypoint.sh
 COPY --chmod=0655 ./main.crontab /opt/restic/main.crontab
 
