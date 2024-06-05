@@ -1,0 +1,26 @@
+services:
+  ftpd_server:
+    image: stilliard/pure-ftpd
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    volumes:
+      - "./volumes/ftp/data:/home/restic/"
+      - "./volumes/ftp/passwd:/etc/pure-ftpd/passwd"
+    environment:
+      PUBLICHOST: "localhost"
+      FTP_USER_NAME: restic
+      FTP_USER_PASS: password
+      FTP_USER_HOME: /home/restic
+  restic:
+    image: Its-Alex/restic-docker:latest
+    build:
+      context: ../
+    environment:
+      - RESTIC_PASSWORD=password
+      - RESTIC_REPOSITORY=rclone:ftpd_server:backup
+      - "RESTIC_FTP_DOCKER_BACKUP_CRON_SCHEDULE=*/1 * * * *"
+      - "RESTIC_FTP_DOCKER_PRUNE_CRON_SCHEDULE=*/2 * * * *"
+    volumes:
+      - "./rclone.conf:/root/.config/rclone/rclone.conf:ro"
+      - "./backup.txt:/backup/backup.txt"

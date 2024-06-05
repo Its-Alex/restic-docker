@@ -49,6 +49,10 @@ and environment variables from `restic-ftp-docker` documented below:
 | RESTIC_FTP_DOCKER_KEEP_WEEKLY          | `4`         | argument for `--keep-weekly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
 | RESTIC_FTP_DOCKER_KEEP_MONTHLY         | `12`        | argument for `--keep-monthly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy) |
 
+## Demo
+
+You can try the container `restic-ftp-docker` in [/demo](/demo/) folder.
+
 ## License
 
 Restic sftp docker is licensed under [BSD 2-Clause License](https://opensource.org/licenses/BSD-2-Clause). You can find the
