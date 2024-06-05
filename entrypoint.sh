@@ -12,4 +12,7 @@ if [[ $RESTIC_FTP_DOCKER_PRUNE_ENABLE == "1" || $RESTIC_FTP_DOCKER_PRUNE_ENABLE 
 $RESTIC_FTP_DOCKER_PRUNE_CRON_SCHEDULE flock -n /opt/restic/prune.lockfile /opt/restic/prune.sh" >> /opt/restic/main.crontab
 fi
 
+echo "main.crontab content:"
+cat /opt/restic/main.crontab
+
 supercronic /opt/restic/main.crontab
