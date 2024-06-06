@@ -32,6 +32,34 @@ Or add it to a `docker-compose.yml`:
 You can configure `backup` and `forget` commands using
 [environment variables](#configuration).
 
+You can execute [`restic`](https://github.com/restic/restic) commands from the
+container using [`command` argument of docker run](https://docs.docker.com/reference/cli/docker/container/run/),
+for example to list existing snapshots:
+
+```sh-session
+$ docker run --rm \
+    --network "restic-ftp-docker" \
+    -e "RESTIC_PASSWORD=your_password" \
+    -e "RESTIC_REPOSITORY=rclone:your_config:path_in_ftp" \
+    -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \
+    -v ./path-to-restore-folder:/restore/ \
+    Its-Alex/restic-docker:latest \
+    snapshots
+```
+
+Or to restore a snapshot:
+
+```sh-session
+$ docker run --rm \
+    --network "restic-ftp-docker" \
+    -e "RESTIC_PASSWORD=your_password" \
+    -e "RESTIC_REPOSITORY=rclone:your_config:path_in_ftp" \
+    -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \
+    -v ./path-to-restore-folder:/restore/ \
+    Its-Alex/restic-docker:latest \
+    restore a46d6b7e -t "/restore"
+```
+
 ## Configuration
 
 To configure `restic-ftp-docker`, you can use
