@@ -1,6 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
+# If command are passed to docker container execute restic
+if [[ $# -ne 0 ]]; then
+    restic "$@"
+    exit 0
+fi
+
 RESTIC_FTP_DOCKER_BACKUP_CRON_SCHEDULE=${RESTIC_FTP_DOCKER_BACKUP_CRON_SCHEDULE:-"0 * * * *"}
 RESTIC_FTP_DOCKER_FORGET_CRON_SCHEDULE=${RESTIC_FTP_DOCKER_FORGET_CRON_SCHEDULE:-"0 0 * * *"}
 RESTIC_FTP_DOCKER_IS_FORGET_ENABLE=${RESTIC_FTP_DOCKER_IS_FORGET_ENABLE:-"1"}

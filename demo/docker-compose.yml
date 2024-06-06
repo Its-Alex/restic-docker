@@ -24,3 +24,7 @@ services:
     volumes:
       - "./rclone.conf:/root/.config/rclone/rclone.conf:ro"
       - "./backup.txt:/backup/backup.txt"
+
+networks:
+  default:
+    name: restic-ftp-docker

@@ -38,7 +38,46 @@ ftpd_server-1  |   pure-ftpd  -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P 
 ```
 
 `restic-ftp-docker` is configured to make backup every minute, and forget every
-two minutes.
+two minutes. Configuration can be checked in [docker-compose.yml](./docker-compose.yml).
+So wait few minutes to have snapshots availables.
+
+## How to restore a snapshot
+
+First you should list all availables snapshots:
+
+```sh-session
+$ docker run --rm \
+    --network "restic-ftp-docker" \
+    -e "RESTIC_PASSWORD=password" \
+    -e "RESTIC_REPOSITORY=rclone:ftpd_server:backup" \
+    -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \
+    -v ./restore:/restore/ \
+    Its-Alex/restic-docker:latest \
+    snapshots
+ID        Time                 Host          Tags        Paths
+----------------------------------------------------------------
+a46d6b7e  2024-06-06 12:47:03  62e7fedad946              /backup
+0762a2d6  2024-06-06 12:59:00  62e7fedad946              /backup
+7ee735a9  2024-06-06 13:00:11  62e7fedad946              /backup
+ae11ed5e  2024-06-06 13:01:00  690b65f37948              /backup
+----------------------------------------------------------------
+4 snapshots
+```
+
+Select the snapshot to restore and use:
+
+```sh-session
+$ docker run --rm \
+    --network "restic-ftp-docker" \
+    -e "RESTIC_PASSWORD=password" \
+    -e "RESTIC_REPOSITORY=rclone:ftpd_server:backup" \
+    -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \
+    -v ./restore:/restore/ \
+    Its-Alex/restic-docker:latest \
+    restore a46d6b7e -t "/restore"
+restoring <Snapshot a46d6b7e of [/backup] at 2024-06-06 12:47:03.188732624 +0000 UTC by root@62e7fedad946> to /restore
+Summary: Restored 2 files/dirs (19 B) in 0:00
+```
 
 ## Hack
 
