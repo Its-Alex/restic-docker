@@ -5,7 +5,7 @@ This demo launch two services:
 - [`stilliard/pure-ftpd`](https://github.com/stilliard/docker-pure-ftpd)
 - [`Its-Alex/restic-docker`](/)
 
-You can find their configuration in [docker-compose.yml](./docker-compose.yml),
+You can find their configuration in [docker-compose.yml](./docker-compose.yml).
 
 ## Setup
 
