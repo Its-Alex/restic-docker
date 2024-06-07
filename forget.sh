@@ -12,10 +12,10 @@ max_retries=5
 while ! restic forget \
 		--compact \
         --prune \
-		--keep-hourly="${RESTIC_FTP_DOCKER_KEEP_HOURLY:-24}" \
-		--keep-daily="${RESTIC_FTP_DOCKER_KEEP_DAILY:-7}" \
-		--keep-weekly="${RESTIC_FTP_DOCKER_KEEP_WEEKLY:-4}" \
-		--keep-monthly="${RESTIC_FTP_DOCKER_KEEP_MONTHLY:-12}"; do
+		--keep-hourly="${RESTIC_DOCKER_KEEP_HOURLY:-24}" \
+		--keep-daily="${RESTIC_DOCKER_KEEP_DAILY:-7}" \
+		--keep-weekly="${RESTIC_DOCKER_KEEP_WEEKLY:-4}" \
+		--keep-monthly="${RESTIC_DOCKER_KEEP_MONTHLY:-12}"; do
     retry_count=$((retry_count + 1))
     if [ $retry_count -ge $max_retries ]; then
         echo "Reached maximum retry limit of $max_retries. Exiting."

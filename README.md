@@ -62,20 +62,23 @@ $ docker run --rm \
 
 ## Configuration
 
-To configure `restic-ftp-docker`, you can use
-[environment variables from `restic`](https://restic.readthedocs.io/en/latest/manual_rest.html)
-and environment variables from `restic-ftp-docker` documented below:
+To configure `restic-ftp-docker`, you can use environment variables from both `restic` and `restic-ftp-docker`, as documented below.
 
-| Name                                   | Default     | Description                                                                                                                                                                              |
-| -------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| RESTIC_FTP_DOCKER_BACKUP_CRON_SCHEDULE | `0 * * * *` | Cron expression to launch [backup script](/backup.sh)                                                                                                                                    |
-| RESTIC_FTP_DOCKER_BACKUP_FOLDER        | `/backup`   | Backup path                                                                                                                                                                              |
-| RESTIC_FTP_DOCKER_IS_FORGET_ENABLE     | `1`         | Enable or disable `restic forget script in crontab`                                                                                                                                      |
-| RESTIC_FTP_DOCKER_FORGET_CRON_SCHEDULE | `0 0 * * *` | Cron expression to launch [forget script](/forget.sh)                                                                                                                                    |
-| RESTIC_FTP_DOCKER_KEEP_HOURLY          | `24`        | argument for `--keep-hourly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
-| RESTIC_FTP_DOCKER_KEEP_DAILY           | `7`         | argument for `--keep-daily` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)   |
-| RESTIC_FTP_DOCKER_KEEP_WEEKLY          | `4`         | argument for `--keep-weekly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
-| RESTIC_FTP_DOCKER_KEEP_MONTHLY         | `12`        | argument for `--keep-monthly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy) |
+Please note that the `RESTIC_DOCKER_` prefix is used for `restic-ftp-docker` project environment variables.  
+When the `_DOCKER_` suffix is not present in the prefix, these are the environment variables supported in the restic project.
+
+For information on environment variables supported in the restic project, refer to [this documentation](https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables).
+
+| Name                               | Default     | Description                                                                                                                                                                              |
+| ---------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RESTIC_DOCKER_BACKUP_CRON_SCHEDULE | `0 * * * *` | Cron expression to launch [backup script](/backup.sh)                                                                                                                                    |
+| RESTIC_DOCKER_BACKUP_FOLDER        | `/backup`   | Backup path                                                                                                                                                                              |
+| RESTIC_DOCKER_IS_FORGET_ENABLE     | `1`         | Enable or disable `restic forget script in crontab`                                                                                                                                      |
+| RESTIC_DOCKER_FORGET_CRON_SCHEDULE | `0 0 * * *` | Cron expression to launch [forget script](/forget.sh)                                                                                                                                    |
+| RESTIC_DOCKER_KEEP_HOURLY          | `24`        | argument for `--keep-hourly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
+| RESTIC_DOCKER_KEEP_DAILY           | `7`         | argument for `--keep-daily` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)   |
+| RESTIC_DOCKER_KEEP_WEEKLY          | `4`         | argument for `--keep-weekly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
+| RESTIC_DOCKER_KEEP_MONTHLY         | `12`        | argument for `--keep-monthly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy) |
 
 ## Demo
 
