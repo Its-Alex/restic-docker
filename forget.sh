@@ -7,6 +7,8 @@ if ! restic unlock; then
 fi
 
 echo "Forgetting old snapshots"
+# As a result of network problems or other types of issues that I can't remember,
+# a loop is implemented here to make 5 backup attempts before returning an error.
 retry_count=0
 max_retries=5
 while ! restic forget \
