@@ -1,2 +1,2 @@
 # Backup script
-RESTIC_FTP_DOCKER_BACKUP_CRON_SCHEDULE flock -n /opt/restic/backup.lockfile /opt/restic/backup.sh
+RESTIC_DOCKER_BACKUP_CRON_SCHEDULE flock -n /opt/restic/backup.lockfile /opt/restic/backup.sh
