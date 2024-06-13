@@ -1,11 +1,12 @@
-# Restic ftp docker
+# Restic docker
 
-This container aim to create a container capable to backup files with restic
-to a ftp server using rclone.
+This repository aim to create a container capable to backup files with restic
+using rclone to be compatible with any provider.
 
 ## Getting started
 
-To use this container you can launch it from docker cli:
+To use this container you can launch it from docker cli, for example using
+rclone:
 
 ```sh-session
 $ docker run \
@@ -38,7 +39,7 @@ for example to list existing snapshots:
 
 ```sh-session
 $ docker run --rm \
-    --network "restic-ftp-docker" \
+    --network "restic-docker" \
     -e "RESTIC_PASSWORD=your_password" \
     -e "RESTIC_REPOSITORY=rclone:your_config:path_in_ftp" \
     -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \
@@ -51,7 +52,7 @@ Or to restore a snapshot:
 
 ```sh-session
 $ docker run --rm \
-    --network "restic-ftp-docker" \
+    --network "restic-docker" \
     -e "RESTIC_PASSWORD=your_password" \
     -e "RESTIC_REPOSITORY=rclone:your_config:path_in_ftp" \
     -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \
@@ -62,9 +63,9 @@ $ docker run --rm \
 
 ## Configuration
 
-To configure `restic-ftp-docker`, you can use environment variables from both `restic` and `restic-ftp-docker`, as documented below.
+To configure `restic-docker`, you can use environment variables from both `restic` and `restic-docker`, as documented below.
 
-Please note that the `RESTIC_DOCKER_` prefix is used for `restic-ftp-docker` project environment variables.  
+Please note that the `RESTIC_DOCKER_` prefix is used for `restic-docker` project environment variables.  
 When the `_DOCKER_` suffix is not present in the prefix, these are the environment variables supported in the restic project.
 
 For information on environment variables supported in the restic project, refer to [this documentation](https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables).
@@ -82,9 +83,11 @@ For information on environment variables supported in the restic project, refer 
 
 ## Demo
 
-You can try the container `restic-ftp-docker` in [/demo](/demo/) folder.
+You can try the container `restic-docker` with some examples:
+
+- Backup in `ftp` in [/demo/ftp](/demo/ftp) folder.
 
 ## License
 
-Restic sftp docker is licensed under [BSD 2-Clause License](https://opensource.org/licenses/BSD-2-Clause). You can find the
-complete text in [`LICENSE`](LICENSE).
+Restic docker is licensed under [BSD 2-Clause License](https://opensource.org/licenses/BSD-2-Clause).
+You can find the complete text in [`LICENSE`](LICENSE).

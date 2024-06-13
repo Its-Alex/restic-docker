@@ -15,7 +15,7 @@ services:
   restic:
     image: Its-Alex/restic-docker:latest
     build:
-      context: ../
+      context: ../../
     environment:
       - RESTIC_PASSWORD=password
       - RESTIC_REPOSITORY=rclone:ftpd_server:backup
@@ -27,4 +27,4 @@ services:
 
 networks:
   default:
-    name: restic-ftp-docker
+    name: restic-docker

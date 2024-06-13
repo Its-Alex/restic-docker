@@ -37,7 +37,7 @@ ftpd_server-1  | Starting Pure-FTPd:
 ftpd_server-1  |   pure-ftpd  -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P localhost   -p 30000:30009 -c 5 -C 5
 ```
 
-`restic-ftp-docker` is configured to make backup every minute, and forget every
+`restic-docker` is configured to make backup every minute, and forget every
 two minutes. Configuration can be checked in [docker-compose.yml](./docker-compose.yml).
 So wait few minutes to have snapshots availables.
 
@@ -47,7 +47,7 @@ First you should list all availables snapshots:
 
 ```sh-session
 $ docker run --rm \
-    --network "restic-ftp-docker" \
+    --network "restic-docker" \
     -e "RESTIC_PASSWORD=password" \
     -e "RESTIC_REPOSITORY=rclone:ftpd_server:backup" \
     -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \
@@ -68,7 +68,7 @@ Select the snapshot to restore and use:
 
 ```sh-session
 $ docker run --rm \
-    --network "restic-ftp-docker" \
+    --network "restic-docker" \
     -e "RESTIC_PASSWORD=password" \
     -e "RESTIC_REPOSITORY=rclone:ftpd_server:backup" \
     -v "./rclone.conf:/root/.config/rclone/rclone.conf:ro" \

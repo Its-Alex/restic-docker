@@ -7,7 +7,7 @@ on:
 jobs:
   release-latest:
     name: "Release"
-    if: ${{ github.repository == 'Its-Alex/restic-ftp-docker' && contains(github.ref, 'refs/heads/main') }}
+    if: ${{ github.repository == 'Its-Alex/restic-docker' && contains(github.ref, 'refs/heads/main') }}
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout project
@@ -28,7 +28,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/i386
           push: true
-          tags: itsalex/restic-ftp
+          tags: itsalex/restic
           file: Dockerfile
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
