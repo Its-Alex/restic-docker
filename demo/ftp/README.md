@@ -19,13 +19,6 @@ Then you can go see the logs:
 
 ```sh-session
 $ docker compose logs
-restic-1       | main.crontab content:
-restic-1       | # Backup script
-restic-1       | */1 * * * * flock -n /opt/restic/backup.lockfile /opt/restic/backup.sh
-restic-1       |
-restic-1       | # Forget script
-restic-1       | */2 * * * * flock -n /opt/restic/forget.lockfile /opt/restic/forget.sh
-restic-1       | time="2024-06-05T21:06:07Z" level=info msg="read crontab: /opt/restic/main.crontab"
 ftpd_server-1  | Creating user...
 ftpd_server-1  | Password:
 ftpd_server-1  | Enter it again:
@@ -35,10 +28,14 @@ ftpd_server-1  | Setting default max clients to: 5
 ftpd_server-1  | Setting default max connections per ip to: 5
 ftpd_server-1  | Starting Pure-FTPd:
 ftpd_server-1  |   pure-ftpd  -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P localhost   -p 30000:30009 -c 5 -C 5
+restic-1       | main.crontab content:
+restic-1       | # Backup script
+restic-1       | */1 * * * * flock -n /opt/restic/backup.lockfile /opt/restic/backup-then-forget.sh
+restic-1       | time="2024-06-13T13:43:18Z" level=info msg="read crontab: /opt/restic/main.crontab"
 ```
 
-`restic-docker` is configured to make backup every minute, and forget every
-two minutes. Configuration can be checked in [docker-compose.yml](./docker-compose.yml).
+`restic-docker` is configured to make backup, then forget every minute.
+Configuration can be checked in [docker-compose.yml](./docker-compose.yml).
 So wait few minutes to have snapshots availables.
 
 ## How to restore a snapshot

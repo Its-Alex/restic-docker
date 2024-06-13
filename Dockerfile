@@ -29,8 +29,7 @@ COPY --from=base-download-cli --chmod=0755 /tmp/restic /usr/local/bin/restic
 COPY --from=base-download-cli --chmod=0755 /tmp/rclone/rclone /usr/local/bin/rclone
 COPY --from=base-download-cli --chmod=0755 /tmp/supercronic /usr/local/bin/supercronic
 
-COPY --chmod=0755 ./backup.sh /opt/restic/backup.sh
-COPY --chmod=0755 ./forget.sh /opt/restic/forget.sh
+COPY --chmod=0755 ./backup-then-forget.sh /opt/restic/backup-then-forget.sh
 COPY --chmod=0755 ./entrypoint.sh /opt/estic/entrypoint.sh
 COPY --chmod=0655 ./main.crontab /opt/restic/main.crontab
 

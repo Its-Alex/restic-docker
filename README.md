@@ -70,16 +70,15 @@ When the `_DOCKER_` suffix is not present in the prefix, these are the environme
 
 For information on environment variables supported in the restic project, refer to [this documentation](https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables).
 
-| Name                               | Default     | Description                                                                                                                                                                              |
-| ---------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| RESTIC_DOCKER_BACKUP_CRON_SCHEDULE | `0 * * * *` | Cron expression to launch [backup script](/backup.sh)                                                                                                                                    |
-| RESTIC_DOCKER_BACKUP_FOLDER        | `/backup`   | Backup path                                                                                                                                                                              |
-| RESTIC_DOCKER_IS_FORGET_ENABLE     | `1`         | Enable or disable `restic forget script in crontab`                                                                                                                                      |
-| RESTIC_DOCKER_FORGET_CRON_SCHEDULE | `0 0 * * *` | Cron expression to launch [forget script](/forget.sh)                                                                                                                                    |
-| RESTIC_DOCKER_KEEP_HOURLY          | `24`        | argument for `--keep-hourly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
-| RESTIC_DOCKER_KEEP_DAILY           | `7`         | argument for `--keep-daily` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)   |
-| RESTIC_DOCKER_KEEP_WEEKLY          | `4`         | argument for `--keep-weekly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
-| RESTIC_DOCKER_KEEP_MONTHLY         | `12`        | argument for `--keep-monthly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy) |
+| Name                                          | Default     | Description                                                                                                                                                                              |
+| --------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RESTIC_DOCKER_BACKUP_AND_FORGET_CRON_SCHEDULE | `0 * * * *` | Cron expression to launch [backup script](/backup.sh)                                                                                                                                    |
+| RESTIC_DOCKER_BACKUP_FOLDER                   | `/backup`   | Backup path                                                                                                                                                                              |
+| RESTIC_DOCKER_IS_FORGET_ENABLE                | `1`         | Enable or disable `restic forget script in crontab`                                                                                                                                      |
+| RESTIC_DOCKER_KEEP_HOURLY                     | `24`        | argument for `--keep-hourly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
+| RESTIC_DOCKER_KEEP_DAILY                      | `7`         | argument for `--keep-daily` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)   |
+| RESTIC_DOCKER_KEEP_WEEKLY                     | `4`         | argument for `--keep-weekly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy)  |
+| RESTIC_DOCKER_KEEP_MONTHLY                    | `12`        | argument for `--keep-monthly` of `restic forget` command, see [restic forget policies](https://restic.readthedocs.io/en/latest/060_forget.html#removing-snapshots-according-to-a-policy) |
 
 ## Demo
 
