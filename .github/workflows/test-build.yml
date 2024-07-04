@@ -1,12 +1,14 @@
-name: CI
+name: CI - Test build
 
 on:
   push:
+    branches:
+      - '!main'
   workflow_dispatch:
 
 jobs:
-  release-latest:
-    name: "Release"
+  build:
+    name: "Test docker build"
     if: ${{ github.repository == 'Its-Alex/restic-docker' && contains(github.ref, 'refs/heads/main') }}
     runs-on: "ubuntu-latest"
     steps:
@@ -22,12 +24,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-      - name: Build and push
+      - name: Build
         id: docker_build
         uses: docker/build-push-action@v5
         with:
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/i386
-          push: true
+          push: false
           tags: itsalex/restic
           file: Dockerfile
       - name: Image digest
