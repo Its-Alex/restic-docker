@@ -1,7 +1,11 @@
 # Restic docker
 
+![Docker Automated build](https://img.shields.io/docker/automated/itsalex/restic)
+
 This repository aim to create a container capable to backup files with restic
 using rclone to be compatible with any provider.
+
+Container versions can be found on [DockerHub](https://hub.docker.com/repository/docker/itsalex/restic/tags).
 
 ## Getting started
 
